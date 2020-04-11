@@ -1,23 +1,24 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import Notifications from "../Notifications";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import logo from "../../assets/logo.svg";
-import { Container, Profile, Content } from "./styles";
+import Notifications from '~/components/Notifications';
 
-export default function Header() {
+import logo from '~/assets/logoRoxa.svg';
+
+import { Container, Content, Profile } from './styles';
+
+function Header() {
   const profile = useSelector(state => state.user.profile);
-
-  console.tron.log(profile);
 
   return (
     <Container>
       <Content>
         <nav>
           <img src={logo} alt="GoBarber" />
-          <Link to="/dashboard">DASHBOARD</Link>
+          <Link to="/">DASHBOARD</Link>
         </nav>
+
         <aside>
           <Notifications />
           <Profile>
@@ -27,11 +28,10 @@ export default function Header() {
             </div>
             <img
               src={
-                profile.avatar !== null
-                  ? profile.avatar.url
-                  : "https://api.adorable.io/avatars/50/abott@adorable.png"
+                profile.avatar ||
+                'https://api.adorable.io/avatars/50/abott@adorable.png'
               }
-              alt="profile"
+              alt={profile.name}
             />
           </Profile>
         </aside>
@@ -39,3 +39,5 @@ export default function Header() {
     </Container>
   );
 }
+
+export default Header;
