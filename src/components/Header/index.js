@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Notifications from "../Notifications";
 
-import logo from "~/assets/headerLogo.svg";
+import logo from "../../assets/logo.svg";
 import { Container, Profile, Content } from "./styles";
 
 export default function Header() {
